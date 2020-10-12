@@ -39,7 +39,8 @@ public class Main {
     }
     private double calcF()
     {
-        return Math.cbrt(m * Math.tan(t) + Math.abs(c * Math.sin(t)));
+        double sinT = Math.sin(t);
+        return Math.cbrt(m * Math.tan(t) + Math.abs(c * sinT));
     }
     private double calcZ()
     {
