@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -5,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MainTest {
     Main main;
 
-    @org.junit.jupiter.api.BeforeEach
+    @BeforeEach
     void setUp() {
         main = new Main();
     }
@@ -13,11 +14,19 @@ class MainTest {
     @Test
     void testCalcY()
     {
-        int i = 240;
-        double h = 0.005;
-        int p = 4;
-        double a = 1.5;
-        double res = main.calcY(p, i, a, h);
-        assertEquals(a, res, h, "y must be a x*x");
+        double expected = 0.6975;
+        main.fillX();
+        double res = main.calcY(main.x[0]);
+        res = Math.abs(res);
+        assertEquals(expected, res, 0.00001, "Wrong calcY");
+    }
+
+    @Test
+    void testFillX()
+    {
+        double expected = 0.8;
+        main.fillX();
+        double res = main.x[0];
+        assertEquals(expected, res, 0.00001, "Wrong fillX");
     }
 }
