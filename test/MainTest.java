@@ -15,7 +15,7 @@ class MainTest {
     void testCalcY()
     {
         double expected = 0.6975;
-        main.fillX();
+        main.fillX(0.8, 2, 0.005);
         double res = main.calcY(main.x[0]);
         res = Math.abs(res);
         assertEquals(expected, res, 0.00001, "Wrong calcY");
@@ -25,7 +25,7 @@ class MainTest {
     void testFillX()
     {
         double expected = 0.8;
-        main.fillX();
+        main.fillX(0.8, 2, 0.005);
         double res = main.x[0];
         assertEquals(expected, res, 0.00001, "Wrong fillX");
     }

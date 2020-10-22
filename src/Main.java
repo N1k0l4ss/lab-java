@@ -11,9 +11,9 @@ public class Main {
     {
         double res = 0;
         if (x < 1.7)
-            res = (p*x*p*x) - 7 / (x*x);
-        else if (x == 1.7)
-            res = pow(a*x, 3) + 7*sqrt(x);
+            res = (p*x)*(p*x) - 7 / (x*x);
+        else if ((x-eps) == 1.7)
+            res = (a*x)*(a*x)*(a*x) + 7*sqrt(x);
         else if (x > 1.7)
             res = log10(x+7*sqrt(x));
         return res;
@@ -24,17 +24,13 @@ public class Main {
         return (int) ((x2 - x1) / deltaX) + 1;
     }
 
-    public void fillX()
+    public void fillX(double x1, double x2, double deltaX)
     {
-        double deltaX = 0.005;
-        double x1 = 0.8;
-        int x2 = 2;
         x = new double[findSizeX(x1,x2,deltaX)];
         for (int i = 0; i < x.length; i++) {
             x[i] = x1 + deltaX * i;
+        }
     }
-
-}
 }
 
 
