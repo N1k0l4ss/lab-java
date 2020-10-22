@@ -3,7 +3,7 @@ public class Main {
 
     double [] x;
     double [] y;
-    double eps = 0.0001;
+    double eps = 0.00001;
     double a = 1.5;
     double p = 4;
 
@@ -12,8 +12,8 @@ public class Main {
         double res = 0;
         if (x < 1.7)
             res = (p*x)*(p*x) - 7 / (x*x);
-        else if ((x-eps) == 1.7)
-            res = (a*x)*(a*x)*(a*x) + 7*sqrt(x);
+        else if (abs (x-1.7) < eps)
+            res = (a*x) * (a*x) * (a*x) + 7 * sqrt(x);
         else if (x > 1.7)
             res = log10(x+7*sqrt(x));
         return res;
