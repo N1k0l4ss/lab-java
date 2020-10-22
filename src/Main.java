@@ -10,10 +10,10 @@ public class Main {
     public double calcY(double x)
     {
         double res = 0;
-        if (x < 1.7)
-            res = (p*x)*(p*x) - 7 / (x*x);
-        else if (abs (x-1.7) < eps)
+        if (abs (x-1.7) < eps)
             res = (a*x) * (a*x) * (a*x) + 7 * sqrt(x);
+        else if (x < 1.7)
+            res = (p*x)*(p*x) - 7 / (x*x);
         else if (x > 1.7)
             res = log10(x+7*sqrt(x));
         return res;
