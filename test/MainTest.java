@@ -22,11 +22,29 @@ class MainTest {
     }
 
     @Test
+    void testFindSize()
+    {
+        double expected = 241;
+        double res = main.findSize(0.8, 2, 0.005);
+        assertEquals(expected, res, "Wrong findSizeX");
+    }
+
+    @Test
     void testFillX()
     {
-        double expected = 0.8;
+        double expected = 2;
         main.fillX(0.8, 2, 0.005);
-        double res = main.x[0];
+        double res = main.x[240];
         assertEquals(expected, res, 0.00001, "Wrong fillX");
+    }
+
+    @Test
+    void testFillY()
+    {
+        main.fillX(0.8, 2, 0.005);
+        main.fillY(0.8, 2, 0.005);
+        double expected = 0.6975;
+        double res = main.y[0];
+        assertEquals(expected, res, 0.00001, "Wrong fillY");
     }
 }
