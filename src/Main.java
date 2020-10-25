@@ -16,7 +16,7 @@ public class Main {
             res = (p*x)*(p*x) - 7 / (x*x);
         else if (x > 1.7)
             res = log10(x+7*sqrt(x));
-        return res;
+        return abs(res);
     }
 
     public int findSize(double x1, double x2, double deltaX)
@@ -26,7 +26,6 @@ public class Main {
 
     public void fillY(double x1, double x2, double deltaX)
     {
-//        fillX(x1, x2, deltaX);
         y = new double[findSize(x1,x2,deltaX)];
         for (int i = 0; i < y.length; i++) {
             y[i] = calcY(x[i]);

@@ -17,7 +17,6 @@ class MainTest {
         double expected = 0.6975;
         main.fillX(0.8, 2, 0.005);
         double res = main.calcY(main.x[0]);
-        res = Math.abs(res);
         assertEquals(expected, res, 0.00001, "Wrong calcY");
     }
 
@@ -41,8 +40,11 @@ class MainTest {
     @Test
     void testFillY()
     {
-        main.fillX(0.8, 2, 0.005);
-        main.fillY(0.8, 2, 0.005);
+        double x1 = 0.8;
+        double x2 = 2;
+        double deltaX = 0.005;
+        main.fillX(x1, x2, deltaX);
+        main.fillY(x1, x2, deltaX);
         double expected = 0.6975;
         double res = main.y[0];
         assertEquals(expected, res, 0.00001, "Wrong fillY");
