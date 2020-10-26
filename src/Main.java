@@ -1,3 +1,4 @@
+// Студент гр. 2151 Белоножко Никита, 2 вариант
 import static java.lang.Math.*;
 public class Main {
 
@@ -12,23 +13,25 @@ public class Main {
         double x1 = 0.8;
         double x2 = 2;
         double deltaX = 0.005;
+        mn.run(mn,x1, x2, deltaX);
+    }
+
+    private void run(Main mn, double x1, double x2, double deltaX)
+    {
         mn.fillX(x1, x2, deltaX);
         mn.fillY(x1, x2, deltaX);
-        System.out.println("Max y = " + mn.maxY());
-        System.out.println("Min y = " + mn.minY());
-        System.out.println("Averange y = " + mn.averangeY());
+        System.out.println("Max y = " + mn.maxY(y));
+        System.out.println("Min y = " + mn.minY(y));
+        System.out.println("Averange y = " + mn.averangeY(y));
     }
 
     public double calcY(double x)
     {
-        double res = 0;
         if (abs (x-1.7) < eps)
-            res = (a*x) * (a*x) * (a*x) + 7 * sqrt(x);
-        else if (x < 1.7)
-            res = (p*x)*(p*x) - 7 / (x*x);
-        else if (x > 1.7)
-            res = log10(x+7*sqrt(x));
-        return abs(res);
+            return  a * x * x * x  + 7 * sqrt(x);
+        else if (x < 1.7 - eps)
+            return p * x * x - 7 / (x*x);
+        return log10(x+7*sqrt(x));
     }
 
     public int findSize(double x1, double x2, double deltaX)
@@ -50,25 +53,25 @@ public class Main {
             x[i] = x1 + deltaX * i;
     }
 
-    public double maxY()
+    public int maxY(double [] y)
     {
-        double max = y[0];
+        int max = 0;
         for (int i = 0; i < y.length; i++)
-            if (y[i]>max)
-                max = y[i];
+            if (y[i]>y[max])
+                max = i;
         return max;
     }
 
-    public double minY()
+    public int minY(double [] y)
     {
-        double min = y[0];
+        int min = 0;
         for (int i = 0; i < y.length; i++)
-            if (y[i]<min)
-                min = y[i];
+            if (y[i]<y[min])
+                min = i;
         return min;
     }
 
-    public double sumY()
+    public double sumY(double [] y)
     {
         double sum = 0;
         for (int i = 0; i < y.length; i++)
@@ -76,9 +79,9 @@ public class Main {
         return sum;
     }
 
-    public double averangeY()
+    public double averangeY(double [] y)
     {
-        return sumY()/y.length;
+        return sumY(y)/y.length;
     }
 }
 

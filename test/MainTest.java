@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+// Студент гр. 2151 Белоножко Никита, 2 вариант
+// Номера для тестирования: 0, 180, 240
 import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
@@ -8,6 +9,7 @@ class MainTest {
     double x1 = 0.8;
     double x2 = 2;
     double deltaX = 0.005;
+    double [] y = { 5, 2, 3, 10, 4, 1 };
 
     @BeforeEach
     void setUp() {
@@ -51,42 +53,34 @@ class MainTest {
     }
 
     @Test
-    void testMinY()
+    void testMinY()     // Y: Number of max = 3, of min = 5, Averange = 4.166.... Sum = 25
     {
-        main.fillX(x1, x2, deltaX);
-        main.fillY(x1, x2, deltaX);
-        double expected = 0.089;
-        double res = main.minY();
+        double expected = 5;
+        double res = main.minY(y);
         assertEquals(expected, res, 0.00001, "Wrong minY");
     }
 
     @Test
     void testMaxY()
     {
-        main.fillX(x1, x2, deltaX);
-        main.fillY(x1, x2, deltaX);
-        double expected = 43.53194;
-        double res = main.maxY();
+        double expected = 3;
+        double res = main.maxY(y);
         assertEquals(expected, res, 0.00001, "Wrong maxY");
     }
 
     @Test
     void testSumY()
     {
-        main.fillX(x1, x2, deltaX);
-        main.fillY(x1, x2, deltaX);
-        double expected = 3837.33993;
-        double res = main.sumY();
+        double expected = 25;
+        double res = main.sumY(y);
         assertEquals(expected, res, 0.00001, "Wrong sumY");
     }
 
     @Test
     void testAverangeY()
     {
-        main.fillX(x1, x2, deltaX);
-        main.fillY(x1, x2, deltaX);
-        double expected = 15.92257;
-        double res = main.averangeY();
+        double expected = 4.166666;
+        double res = main.averangeY(y);
         assertEquals(expected, res, 0.00001, "Wrong averangeY");
     }
 }
