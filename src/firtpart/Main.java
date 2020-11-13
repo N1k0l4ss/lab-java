@@ -18,35 +18,10 @@ public class Main
         Scanner s = new Scanner(System.in);
         str = s.nextLine();
         System.out.println("Input line:\n" + str);
-        mn.printTwoBackspaces(str);
-        mn.printLetterNumber(str);
-        System.out.println("\n=========================================================\n");
+
         mn.printTwoBackspaces(str);
         str = mn.letterIntoNumber(str);
         System.out.println(str);
-    }
-
-    private void printLetterNumber(String str)
-    {
-        StringBuilder res = new StringBuilder("");
-        Boolean charFound = false;
-        String alphabet = "abcdefghijklmnopqrstuvwxyz";
-
-        for (int i = 0; i < str.length(); i++)
-        {
-            for (int j = 0; j < alphabet.length(); j++)
-            {
-                if (Character.toLowerCase(str.charAt(i)) == alphabet.charAt(j))
-                {
-                    System.out.print((j + 1) + " ");
-                    charFound = true;
-                }
-            }
-            if (!charFound || str.charAt(i) == ' ')
-                System.out.print(' ');;
-            charFound = false;
-        }
-        System.out.print("\n");
     }
 
     private void printTwoBackspaces(String str)
