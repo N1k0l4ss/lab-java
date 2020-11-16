@@ -1,10 +1,9 @@
 package secondpart;
-
+// Студент гр. 2151 Белоножко Никита, 2 вариант
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
-// Студент гр. 2151 Белоножко Никита, 2 вариант
+
 public class Student
 {
     private static int counter = 0;
@@ -35,7 +34,8 @@ public class Student
         this("","","",0, 0, 0, "","",0,0);
     }
 
-    public String toString() {
+    public String toString()
+    {
         return  "ID: " + ID + '\n' +
                 "ФИО: " + lName + ' ' + fName + ' ' + patronymic + '\n' +
                 "Дата рождения: " + birthday.toString() + '\n' +
@@ -106,7 +106,8 @@ public class Student
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
