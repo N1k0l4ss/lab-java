@@ -19,18 +19,20 @@ public class Main
         str = s.nextLine();
         System.out.println("Input line:\n" + str);
 
-        mn.printTwoBackspaces(str);
+        System.out.println(mn.makeTwoBackspaces(str));
         str = mn.letterIntoNumber(str);
         System.out.println(str);
     }
 
-    private void printTwoBackspaces(String str)
+    private String makeTwoBackspaces(String str)
     {
+        StringBuilder res = new StringBuilder("");
         for(int i = 0; i < str.length(); i++)
         {
-            System.out.print(str.charAt(i) + "  ");
+            res.append(str.charAt(i) + "  ");
         }
-        System.out.print("\n");
+        res.append("\n");
+        return res.toString();
     }
 
     private String letterIntoNumber(String str)
@@ -42,7 +44,7 @@ public class Main
         {
             for (int j = 0; j < alphabet.length(); j++)
             {
-                if (str.charAt(i)) == alphabet.charAt(j))
+                if (Character.toLowerCase(str.charAt(i)) == alphabet.charAt(j))
                 {
                     res.append('(');
                     res.append(j + 1);
