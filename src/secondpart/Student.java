@@ -4,7 +4,7 @@ public class Student
 {
     private static int counter = 0;
     private int ID;
-    private String fName = "null";
+    private String fName = "";
     private String lName = "null";
     private String patronymic = "null";
     private int yearOfBirth = 0;
@@ -27,7 +27,12 @@ public class Student
     }
 
     public Student() {
-        counter++;
+       // counter++;
+        this("","","",0,"","",0,0);
+    }
+     public Student(String lName) {
+       // counter++;
+        this(lName,"","",0,"","",0,0);
     }
 
     public String toString() {
