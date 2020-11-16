@@ -18,7 +18,6 @@ public class Main
         Scanner s = new Scanner(System.in);
         str = s.nextLine();
         System.out.println("Input line:\n" + str);
-
         System.out.println(mn.makeTwoBackspaces(str));
         str = mn.letterIntoNumber(str);
         System.out.println(str);

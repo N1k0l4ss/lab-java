@@ -18,11 +18,11 @@ public class Main
     {
         mn.s = new Scanner(System.in);
         Student[] students = new Student[5];
-        students[0] = new Student("Петренко", "Михаил", "Викторович", 2001, "ул. Янтарная", "КСУ", 3, 3151);
-        students[1] = new Student("Иванов", "Иван", "Иванович", 2001, "ул. Виноградная", "КСУ", 3, 3151);
-        students[2] = new Student("Антонов", "Валерий", "Васильевич", 2002, "ул. Адмиральская", "ФЭМ", 3, 3144);
-        students[3] = new Student("Высоцкий", "Иван", "Васильевич", 2001, "ул. Советская", "КСУ", 3, 3151);
-        students[4] = new Student("Руденко", "Василий", "Михайлович", 2003, "ул. Янтарная", "ФЭМ", 1, 1144);
+        students[0] = new Student("Петренко", "Михаил", "Викторович", 2001, 3, 6, "ул. Янтарная", "КСУ", 3, 3151);
+        students[1] = new Student("Иванов", "Иван", "Иванович", 2001, 4, 5, "ул. Виноградная", "КСУ", 3, 3151);
+        students[2] = new Student("Антонов", "Валерий", "Васильевич", 2002, 6, 7, "ул. Адмиральская", "ФЭМ", 3, 3144);
+        students[3] = new Student("Высоцкий", "Иван", "Васильевич", 2001, 8, 10, "ул. Советская", "КСУ", 3, 3151);
+        students[4] = new Student("Руденко", "Василий", "Михайлович", 2003, 6, 5, "ул. Янтарная", "ФЭМ", 1, 1144);
         while (true)
             mn.menu(students);
     }
@@ -36,16 +36,16 @@ public class Main
         int sel = mn.s.nextInt();
         while (true)
         {
-//            if (sel == 1)
-//            {
-////                System.out.println("Ведите год: ");
-////                int year = mn.s.nextInt();
-////                Student[] res = mn.getByYear(students, year);
-////                for (int i = 0; i < res.length; i++)
-////                    System.out.println(res[i].toString());
-////                System.out.println();
-//                break;
-//            }
+            if (sel == 1)
+            {
+                System.out.println("Ведите год: ");
+                int year = mn.s.nextInt();
+                Student[] res = mn.getByYear(students, year);
+                for (int i = 0; i < res.length; i++)
+                    System.out.println(res[i].toString());
+                System.out.println();
+                break;
+            }
             if (sel == 2)
             {
                 System.out.println("Введите группу: ");
@@ -105,11 +105,20 @@ public class Main
         return res;
     }
 
-    private void getByYear(Student[] students, int year)
+    private Student[] getByYear(Student[] students, int year)
     {
+        int counter = 0, j = 0;
         for (int i = 0; i < students.length; i++)
-            if (students[i].getYearOfBirth() > year)
-                System.out.println(students[i].toString() + '\n');
+            if (students[i].getBirthday().getYear() > year)
+                counter++;
+        Student [] res = new Student[counter];
+        for (int i = 0; i < students.length; i++)
+            if (students[i].getBirthday().getYear() > year)
+            {
+                res[j] = students[i];
+                j++;
+            }
+        return res;
     }
 
 }

@@ -1,4 +1,9 @@
 package secondpart;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Objects;
+
 // Студент гр. 2151 Белоножко Никита, 2 вариант
 public class Student
 {
@@ -7,19 +12,19 @@ public class Student
     private String lName;
     private String fName;
     private String patronymic;
-    private int yearOfBirth;
+    private LocalDate birthday;
     private String adres;
     private String faqult;
     private int course;
     private int group;
 
-    public Student(String lName, String fName, String patronymic, int yearOfBirth, String adres, String faqult, int course, int group) {
+    public Student(String lName, String fName, String patronymic, int yearOfBirth, int montOfBirth, int dayOfBirth, String adres, String faqult, int course, int group) {
         counter++;
         ID = counter;
         this.fName = fName;
         this.lName = lName;
         this.patronymic = patronymic;
-        this.yearOfBirth = yearOfBirth;
+        this.birthday = LocalDate.of(yearOfBirth, montOfBirth, dayOfBirth);
         this.adres = adres;
         this.faqult = faqult;
         this.course = course;
@@ -27,13 +32,13 @@ public class Student
     }
 
     public Student() {
-        this("","","",0,"","",0,0);
+        this("","","",0, 0, 0, "","",0,0);
     }
 
     public String toString() {
         return  "ID: " + ID + '\n' +
                 "ФИО: " + lName + ' ' + fName + ' ' + patronymic + '\n' +
-                "Год рождения: " + yearOfBirth + '\n' +
+                "Дата рождения: " + birthday.toString() + '\n' +
                 "Адрес: " + adres + ".\tФакультет: " + faqult + '\n' +
                 "Группа: " + group + "\tКурс: " + course;
     }
@@ -62,12 +67,10 @@ public class Student
         this.patronymic = patronymic;
     }
 
-    public int getYearOfBirth() {
-        return yearOfBirth;
-    }
+    public LocalDate getBirthday() { return birthday; }
 
-    public void setYearOfBirth(int yearOfBirth) {
-        this.yearOfBirth = yearOfBirth;
+    public void setBirthday(int year, int month, int day) {
+        this.birthday = LocalDate.of(year, month, day);
     }
 
     public String getAdres() {
@@ -100,5 +103,20 @@ public class Student
 
     public void setGroup(int group) {
         this.group = group;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return course == student.course &&
+                group == student.group &&
+                Objects.equals(lName, student.lName) &&
+                Objects.equals(fName, student.fName) &&
+                Objects.equals(patronymic, student.patronymic) &&
+                Objects.equals(birthday, student.birthday) &&
+                Objects.equals(adres, student.adres) &&
+                Objects.equals(faqult, student.faqult);
     }
 }
