@@ -1,5 +1,5 @@
 package secondpart;
-
+// Студент гр. 2151 Белоножко Никита, 2 вариант
 import java.util.Scanner;
 import static java.lang.System.exit;
 
@@ -11,6 +11,11 @@ public class Main
     public static void main(String[] args)
     {
         mn = new Main();
+        mn.run();
+    }
+
+    private void run()
+    {
         mn.s = new Scanner(System.in);
         Student[] students = new Student[5];
         students[0] = new Student("Петренко", "Михаил", "Викторович", 2001, "ул. Янтарная", "КСУ", 3, 3151);
@@ -31,48 +36,76 @@ public class Main
         int sel = mn.s.nextInt();
         while (true)
         {
-            if (sel == 1)
-            {
-                System.out.println("Ведите год: ");
-                int year = mn.s.nextInt();
-                mn.sortByYear(students, year);
-                break;
-            }
+//            if (sel == 1)
+//            {
+////                System.out.println("Ведите год: ");
+////                int year = mn.s.nextInt();
+////                Student[] res = mn.getByYear(students, year);
+////                for (int i = 0; i < res.length; i++)
+////                    System.out.println(res[i].toString());
+////                System.out.println();
+//                break;
+//            }
             if (sel == 2)
             {
                 System.out.println("Введите группу: ");
                 int group = mn.s.nextInt();
-                mn.sortByGroup(students, group);
+                Student[] res = mn.getByGroup(students, group);
+                for (int i = 0; i < res.length; i++)
+                    System.out.println(res[i].toString());
+                System.out.println();
                 break;
             }
             if (sel == 3)
             {
                 System.out.println("Введите название факультета: ");
                 String faq = mn.s.next();
-                mn.sortByFaq(students, faq);
+                Student[] res = mn.getByFaq(students, faq);
+                for (int i = 0; i < res.length; i++)
+                    System.out.println(res[i].toString());
+                System.out.println();
                 break;
             }
             if (sel == 0)
                 exit(0);
             System.out.println("Неверный ввод, попробуйте еще раз!");
+            break;
         }
     }
 
-    private void sortByFaq(Student[] students, String faq)
+    private Student[] getByFaq(Student[] students, String faq)
     {
+        int counter = 0, j = 0;
         for (int i = 0; i < students.length; i++)
             if (students[i].getFaqult().equals(faq.toUpperCase()))
-                System.out.println(students[i].toString() + '\n');
+                counter++;
+        Student [] res = new Student[counter];
+        for (int i = 0; i < students.length; i++)
+            if (students[i].getFaqult().equals(faq.toUpperCase()))
+            {
+                res[j] = students[i];
+                j++;
+            }
+        return res;
     }
 
-    private void sortByGroup(Student[] students, int group)
+    private Student[] getByGroup(Student[] students, int group)
     {
+        int counter = 0, j = 0;
         for (int i = 0; i < students.length; i++)
             if (students[i].getGroup() == group)
-                System.out.println(students[i].toString() + '\n');
+                counter++;
+        Student [] res = new Student[counter];
+        for (int i = 0; i < students.length; i++)
+            if (students[i].getGroup() == group)
+            {
+                res[j] = students[i];
+                j++;
+            }
+        return res;
     }
 
-    private void sortByYear(Student[] students, int year)
+    private void getByYear(Student[] students, int year)
     {
         for (int i = 0; i < students.length; i++)
             if (students[i].getYearOfBirth() > year)

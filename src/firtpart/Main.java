@@ -1,5 +1,5 @@
 package firtpart;
-
+// Студент гр. 2151 Белоножко Никита, 2 вариант
 import java.util.Scanner;
 
 public class Main
