@@ -33,7 +33,7 @@ public class Main
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
         for (int i = 0; i < str.length(); i++)
         {
-            if (alphabet.contains(Character.toLowerCase(str.charAt(i)) + "")) /// Needs change
+            if (alphabet.contains(Character.toString(Character.toLowerCase(str.charAt(i)))))
             {
                 res.append("(" + (alphabet.indexOf(Character.toLowerCase(str.charAt(i)) + 1)) + ')');
             }
