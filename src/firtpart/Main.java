@@ -29,11 +29,10 @@ public class Main
     private String letterIntoNumberNew(String str)
     {
         StringBuilder res = new StringBuilder("");
-        boolean found = false;
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
         for (int i = 0; i < str.length(); i++)
         {
-            if (alphabet.contains(Character.toString(Character.toLowerCase(str.charAt(i)))))
+            if (alphabet.contains(Character.toString(str.charAt(i)).toLowerCase()))
             {
                 res.append("(" + (alphabet.indexOf(Character.toLowerCase(str.charAt(i)) + 1)) + ')');
             }
