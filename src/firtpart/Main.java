@@ -19,8 +19,28 @@ public class Main
         str = s.nextLine();
         System.out.println("Input line:\n" + str);
         System.out.println(mn.makeTwoBackspaces(str));
+        String str2 = mn.letterIntoNumberNew(str);
         str = mn.letterIntoNumber(str);
         System.out.println(str);
+        System.out.println("\nNew");
+        System.out.println(str2);
+    }
+
+    private String letterIntoNumberNew(String str)
+    {
+        StringBuilder res = new StringBuilder("");
+        boolean found = false;
+        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+        for (int i = 0; i < str.length(); i++)
+        {
+            if (alphabet.contains(Character.toLowerCase(str.charAt(i)) + "")) /// Needs change
+            {
+                res.append("(" + (alphabet.indexOf(Character.toLowerCase(str.charAt(i)) + 1)) + ')');
+            }
+            else
+                res.append(str.charAt(i));
+        }
+        return res.toString();
     }
 
     private String makeTwoBackspaces(String str)
