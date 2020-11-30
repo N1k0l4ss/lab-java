@@ -54,7 +54,7 @@ public class Lab2 {
         return min;
     }
 
-    public double sumY(double [] y)
+    public double sumOf(double [] y)
     {
         double sum = 0;
         for (int i = 0; i < y.length; i++)
@@ -64,7 +64,7 @@ public class Lab2 {
 
     public double averageY(double [] y)
     {
-        return sumY(y)/y.length;
+        return sumOf(y)/y.length;
     }
 
     public double[] getY() {

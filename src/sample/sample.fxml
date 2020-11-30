@@ -58,6 +58,11 @@
                </font>
             </Label>
             <Button fx:id="btCalc" layoutX="471.0" layoutY="46.0" mnemonicParsing="false" text="Calculate" />
+            <Label fx:id="sumLabel1" layoutX="11.0" layoutY="228.0" text="Sum of Y =" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

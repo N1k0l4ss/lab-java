@@ -23,11 +23,14 @@ public class Controller {
     private Label iterationsLabel;
     @FXML
     private Button btCalc;
+    @FXML
+    private Label sumLabel1;
 
     private double x1;
     private double x2;
     private double deltaX;
     private double [] y;
+
     @FXML
     void initialize()
     {
@@ -42,11 +45,9 @@ public class Controller {
             maxYLabel.setText("Max Y = " + String.valueOf(y[l2.maxY(y)]));
             minYLabel.setText("Min Y = " + String.valueOf(y[l2.minY(y)]));
             averageYLabel.setText("Average Y = " + String.valueOf(l2.averageY(y)));
-            iterationsLabel.setText("Times of iterations = " + String.valueOf(l2.findSize(x1, x2, deltaX)) + "\n"+ String.valueOf(l2.sumY()));
+            iterationsLabel.setText("Times of iterations = " + String.valueOf(l2.findSize(x1, x2, deltaX)));
+            sumLabel1.setText("Sum of Y = " + String.valueOf(l2.sumOf(y)));
         });
     }
-
-
-
 }
 

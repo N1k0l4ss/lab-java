@@ -73,7 +73,7 @@ class Lab2Test {
     void testSumY()
     {
         double expected = 25;
-        double res = l2.sumY(y);
+        double res = l2.sumOf(y);
         assertEquals(expected, res, 0.0001, "Wrong sumY");
     }
 
