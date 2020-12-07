@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -52,11 +53,16 @@ public class Controller {
             }
             else
             {
-                maxYLabel.setText("x2 can't be less than x1!");
-                minYLabel.setText("");
-                averageYLabel.setText("");
-                iterationsLabel.setText("");
-                sumLabel1.setText("");
+//                maxYLabel.setText("x2 can't be less than x1!");
+//                minYLabel.setText("");
+//                averageYLabel.setText("");
+//                iterationsLabel.setText("");
+//                sumLabel1.setText("");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("x2 can't be less than x1!");
+                alert.showAndWait();
             }
 
         });
