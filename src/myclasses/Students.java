@@ -3,17 +3,17 @@ package myclasses;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Students {
-    private static int counter = 0;
-    private int ID;
-    private String lName;
-    private String fName;
-    private String patronymic;
-    private LocalDate birthday;
-    private String adres;
-    private String faqult;
-    private int course;
-    private int group;
+abstract public class Students {
+    protected static int counter = 0;
+    protected int ID;
+    protected String lName;
+    protected String fName;
+    protected String patronymic;
+    protected LocalDate birthday;
+    protected String adres;
+    protected String faqult;
+    protected int course;
+    protected int group;
 
     public Students() { this("","","",0, 0, 0, "","",0,0); }
     public String getfName() { return fName; }
@@ -46,10 +46,11 @@ public class Students {
         this.group = group;
     }
 
-    public String toString() { }
+    abstract public String toString();
 
     @Override
-    public boolean equals(Object o) {}
+    abstract public boolean equals(Object o);
+
 }
 
 

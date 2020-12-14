@@ -1,8 +1,8 @@
 package sample;
 
-import myclasses.InternalStudent;
+import myclasses.Bachelor;
 
 public class Controller {
-    InternalStudent st;
+    Bachelor st;
 
 }
