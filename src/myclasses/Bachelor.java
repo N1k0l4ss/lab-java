@@ -5,25 +5,24 @@ import java.util.Objects;
 
 public class Bachelor extends Students {
 
-    public Bachelor(String lName, String fName, String patronymic, int yearOfBirth, int montOfBirth, int dayOfBirth, String adres, String faqult, int course, int group) {
-        counter++;
-        ID = counter;
-        this.fName = fName;
-        this.lName = lName;
+    public Bachelor(String lName, String fName, String patronymic, LocalDate date, String adres, String faqult, int course, int group) {
+        ID = Students.counter;
+        this.firstName = fName;
+        this.lastName = lName;
         this.patronymic = patronymic;
-        this.birthday = LocalDate.of(yearOfBirth, montOfBirth, dayOfBirth);
+        this.birthday = date;
         this.adres = adres;
         this.faqult = faqult;
         this.course = course;
         this.group = group;
     }
-    public Bachelor() { this("","","",0, 0, 0, "","", 0, 0); }
+    public Bachelor() { this("","","",LocalDate.of(0,0,0), "","", 0, 0); }
 
     @Override
     public String toString()
     {
         return  "ID: " + ID + '\n' +
-                "ФИО: " + lName + ' ' + fName + ' ' + patronymic + '\n' +
+                "ФИО: " + lastName + ' ' + firstName + ' ' + patronymic + '\n' +
                 "Дата рождения: " + birthday.toString() + '\n' +
                 "Адрес: " + adres + ".\tФакультет: " + faqult + '\n' +
                 "Группа: " + group + "\tКурс: " + course;
@@ -37,8 +36,8 @@ public class Bachelor extends Students {
         Bachelor student = (Bachelor) o;
         return course == student.course &&
                 group == student.group &&
-                Objects.equals(lName, student.lName) &&
-                Objects.equals(fName, student.fName) &&
+                Objects.equals(lastName, student.lastName) &&
+                Objects.equals(firstName, student.firstName) &&
                 Objects.equals(patronymic, student.patronymic) &&
                 Objects.equals(birthday, student.birthday) &&
                 Objects.equals(adres, student.adres) &&

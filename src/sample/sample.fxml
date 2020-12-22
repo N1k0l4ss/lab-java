@@ -1,8 +1,30 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<GridPane fx:controller="sample.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <TableView fx:id="table" onKeyPressed="#onTableKeyClick" prefHeight="390.0" prefWidth="850.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn id="id" fx:id="id" prefWidth="36.0" text="ID" />
+            <TableColumn id="lName" fx:id="lName" prefWidth="78.0" text="Фамилия" />
+            <TableColumn id="fName" fx:id="fName" prefWidth="70.0" text="Имя" />
+            <TableColumn id="patronymic" fx:id="patronymic" prefWidth="89.0" text="Отчество" />
+            <TableColumn id="birthday" fx:id="birthday" prefWidth="118.0" text="Дата рождения" />
+            <TableColumn id="adres" fx:id="adres" prefWidth="108.0" text="Адрес" />
+            <TableColumn id="faqult" fx:id="faqult" prefWidth="84.0" text="Факультет" />
+            <TableColumn id="course" fx:id="course" minWidth="5.0" prefWidth="59.0" text="Курс" />
+            <TableColumn id="group" fx:id="group" prefWidth="67.0" text="Группа" />
+            <TableColumn id="diplomNumber" fx:id="diplomNumber" prefWidth="140.0" text="Номер диплома" />
+        </columns>
+      </TableView>
+      <Button fx:id="newMagister" layoutX="14.0" layoutY="405.0" mnemonicParsing="false" onMouseClicked="#newMagisterClicked" text="Добавить студента магистра" />
+      <Button fx:id="newBachelor" layoutX="14.0" layoutY="442.0" mnemonicParsing="false" onMouseClicked="#newBachelorClicked" text="Добавить студента бакалавра" />
+      <Button fx:id="saveFile" layoutX="762.0" layoutY="442.0" mnemonicParsing="false" onMouseClicked="#saveFileClicked" text="Сохранить" />
+      <Button fx:id="openFile" layoutX="773.0" layoutY="405.0" mnemonicParsing="false" onMouseClicked="#loadFileClicked" text="Открыть" />
+      <Button layoutX="203.0" layoutY="442.0" mnemonicParsing="false" onMouseClicked="#onDelClicked" text="Удалить" />
+   </children>
+</AnchorPane>

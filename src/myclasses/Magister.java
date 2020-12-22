@@ -10,25 +10,24 @@ private int diplomNumber;
 
     public int getDiplomNumber() { return diplomNumber; }
 
-    public Magister(String lName, String fName, String patronymic, int yearOfBirth, int montOfBirth, int dayOfBirth, String adres, String faqult, int course, int group, int diplomNumber) {
-        counter++;
-        ID = counter;
-        this.fName = fName;
-        this.lName = lName;
+    public Magister(String lName, String fName, String patronymic, LocalDate date, String adres, String faqult, int course, int group, int diplomNumber) {
+        ID = Students.counter;
+        this.firstName = fName;
+        this.lastName = lName;
         this.patronymic = patronymic;
-        this.birthday = LocalDate.of(yearOfBirth, montOfBirth, dayOfBirth);
+        this.birthday = date;
         this.adres = adres;
         this.faqult = faqult;
         this.course = course;
         this.group = group;
         this.diplomNumber = diplomNumber;
     }
-    public Magister() { this("","","",0, 0, 0, "","", 0, 0, 0); }
+    public Magister() { this("","","",LocalDate.of(0,0,0), "","", 0, 0, 0); }
 
     @Override
     public String toString() {
-        return  "ID: " + ID + "Номер диплома: " + diplomNumber + '\n' +
-                "ФИО: " + lName + ' ' + fName + ' ' + patronymic + '\n' +
+        return  "ID: " + ID + "\tНомер диплома: " + diplomNumber + '\n' +
+                "ФИО: " + lastName + ' ' + firstName + ' ' + patronymic + '\n' +
                 "Дата рождения: " + birthday.toString() + '\n' +
                 "Адрес: " + adres + ".\tФакультет: " + faqult + '\n' +
                 "Группа: " + group + "\tКурс: " + course;
@@ -41,8 +40,8 @@ private int diplomNumber;
         Magister student = (Magister) o;
         return course == student.course &&
                 group == student.group &&
-                Objects.equals(lName, student.lName) &&
-                Objects.equals(fName, student.fName) &&
+                Objects.equals(lastName, student.lastName) &&
+                Objects.equals(firstName, student.firstName) &&
                 Objects.equals(patronymic, student.patronymic) &&
                 Objects.equals(birthday, student.birthday) &&
                 Objects.equals(adres, student.adres) &&
