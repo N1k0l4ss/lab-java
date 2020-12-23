@@ -142,7 +142,6 @@ public class Controller {
             for (int i = 0; i < filesize; i++) {
                 studentsObservableList.add((Students) ois.readObject());
             }
-
             ois.close();
         } catch (IOException ioe) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
