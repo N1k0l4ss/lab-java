@@ -52,6 +52,7 @@ public class DoubleArrayReader implements DoubleArrayReaderInterface{
             for (int i = 0; scanner.hasNext(); i++) {
                 lines[i]= scanner.nextLine();
             }
+            scanner.close();
             String[][] linesTwoDimensionalArray = new String[length][length];
             for (int i = 0; i < length; i++) {
                 linesTwoDimensionalArray[i] = lines[i].trim().split(" +");
