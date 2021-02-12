@@ -21,7 +21,7 @@ public class ArrayProcessor implements ArrayProcessorInterface{
         boolean initialized = false;
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length; j++) {
-                if (i + j + 1 == array.length || i + j + 1 > array.length) // Побочная диагональ, и нижестоящие от неё элементы
+                if (i + j + 1 >= array.length) // Побочная диагональ, и нижестоящие от неё элементы
                 {
                     if (!initialized)
                     {
