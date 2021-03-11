@@ -40,9 +40,15 @@ public class MySorts {
                 .collect(Collectors.toSet());
     }
     // The most rich in year of birth
-    public static Map<Integer, Customer> sortF(List<Customer> customerList) {
+        public static Map<Integer, Customer> sortF(List<Customer> customerList) {
         Map<Integer, Customer> map = new HashMap<>();
-        customerList.stream().sorted(Comparator.comparing(Customer::getBirthYear).thenComparing(Customer::getBalance)).forEach(c-> map.put(c.getBirthYear(), c));
+        // Старая запись
+//        customerList.stream()
+//        .sorted(Comparator.comparing(Customer::getBirthYear).thenComparing(Customer::getBalance))
+//        .forEach(c-> map.put(c.getBirthYear(), c));
+        customerList.stream()
+                .sorted(Comparator.comparing(Customer::getBalance))
+                .forEach(c->map.put(c.getBirthYear(), c));
         return map;
     }
 }
