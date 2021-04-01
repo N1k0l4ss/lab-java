@@ -17,22 +17,7 @@ public class CustomerDB {
 
     public List<Customer> getCustomersFromDB() throws SQLException{
         try(PreparedStatement ps = connection.prepareStatement("select * from customer")){
-            ResultSet resultSet = ps.executeQuery();
-            List<Customer> customers = new ArrayList<>();
-            while (resultSet.next()){
-                customers.add(
-                        new Customer(
-                                resultSet.getInt(1),
-                                resultSet.getString(2),
-                                resultSet.getString(3),
-                                resultSet.getString(4),
-                                resultSet.getInt(5),
-                                resultSet.getString(6),
-                                resultSet.getLong(7),
-                                resultSet.getDouble(8)
-                                ));
-            }
-            return customers;
+            return getCustomers(ps);
         }
     }
 
@@ -60,22 +45,7 @@ public class CustomerDB {
     public List<Customer> sortA(String name) throws SQLException{
         try(PreparedStatement ps = connection.prepareStatement("select * from customer where name = ?")){
             ps.setString(1, name);
-            ResultSet resultSet = ps.executeQuery();
-            List<Customer> customers = new ArrayList<>();
-            while (resultSet.next()){
-                customers.add(
-                        new Customer(
-                                resultSet.getInt(1),
-                                resultSet.getString(2),
-                                resultSet.getString(3),
-                                resultSet.getString(4),
-                                resultSet.getInt(5),
-                                resultSet.getString(6),
-                                resultSet.getLong(7),
-                                resultSet.getDouble(8)
-                        ));
-            }
-            return customers;
+            return getCustomers(ps);
         }
     }
 
@@ -86,64 +56,38 @@ public class CustomerDB {
         try(PreparedStatement ps = connection.prepareStatement("select * from customer where cardNumber >= ? and cardNumber <= ?")){
             ps.setLong(1, min);
             ps.setLong(2, max);
-            ResultSet resultSet = ps.executeQuery();
-            List<Customer> customers = new ArrayList<>();
-            while (resultSet.next()){
-                customers.add(
-                        new Customer(
-                                resultSet.getInt(1),
-                                resultSet.getString(2),
-                                resultSet.getString(3),
-                                resultSet.getString(4),
-                                resultSet.getInt(5),
-                                resultSet.getString(6),
-                                resultSet.getLong(7),
-                                resultSet.getDouble(8)
-                        ));
-            }
-            return customers;
+            return getCustomers(ps);
         }
+    }
+
+    private List<Customer> getCustomers(PreparedStatement ps) throws SQLException {
+        ResultSet resultSet = ps.executeQuery();
+        List<Customer> customers = new ArrayList<>();
+        while (resultSet.next()) {
+            customers.add(
+                    new Customer(
+                            resultSet.getInt(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getString(4),
+                            resultSet.getInt(5),
+                            resultSet.getString(6),
+                            resultSet.getLong(7),
+                            resultSet.getDouble(8)
+                    ));
+        }
+        return customers;
     }
 
     public List<Customer> sortC() throws SQLException{
         try(PreparedStatement ps = connection.prepareStatement("select * from customer where balance < 0 order by balance desc")){
-            ResultSet resultSet = ps.executeQuery();
-            List<Customer> customers = new ArrayList<>();
-            while (resultSet.next()){
-                customers.add(
-                        new Customer(
-                                resultSet.getInt(1),
-                                resultSet.getString(2),
-                                resultSet.getString(3),
-                                resultSet.getString(4),
-                                resultSet.getInt(5),
-                                resultSet.getString(6),
-                                resultSet.getLong(7),
-                                resultSet.getDouble(8)
-                        ));
-            }
-            return customers;
+            return getCustomers(ps);
         }
     }
 
     public List<Customer> sortD() throws SQLException{
         try(PreparedStatement ps = connection.prepareStatement("select * from customer order by balance, cardNumber")){
-            ResultSet resultSet = ps.executeQuery();
-            List<Customer> customers = new ArrayList<>();
-            while (resultSet.next()){
-                customers.add(
-                        new Customer(
-                                resultSet.getInt(1),
-                                resultSet.getString(2),
-                                resultSet.getString(3),
-                                resultSet.getString(4),
-                                resultSet.getInt(5),
-                                resultSet.getString(6),
-                                resultSet.getLong(7),
-                                resultSet.getDouble(8)
-                        ));
-            }
-            return customers;
+            return getCustomers(ps);
         }
     }
 
@@ -161,22 +105,7 @@ public class CustomerDB {
 
     public List<Customer> sortF() throws SQLException {
         try (PreparedStatement ps = connection.prepareStatement("select * from (select * from customer order by balance asc) as c group by birthYear")) {
-            ResultSet resultSet = ps.executeQuery();
-            List<Customer> customers = new ArrayList<>();
-            while (resultSet.next()) {
-                customers.add(
-                        new Customer(
-                                resultSet.getInt(1),
-                                resultSet.getString(2),
-                                resultSet.getString(3),
-                                resultSet.getString(4),
-                                resultSet.getInt(5),
-                                resultSet.getString(6),
-                                resultSet.getLong(7),
-                                resultSet.getDouble(8)
-                        ));
-            }
-            return customers;
+            return getCustomers(ps);
         }
     }
 }
